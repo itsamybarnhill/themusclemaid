@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — The Muscle Maid</title>
+  <meta name="description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Contact-page specific styles */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 16px;
+    }
+    .contact-card {
+      background: var(--clean-white);
+      border: 1px solid #f3e3e8;
+      border-radius: 18px;
+      padding: 36px 24px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-soft);
+    }
+    .contact-card .icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 18px;
+      background: var(--soft-blush);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+    }
+    .contact-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .contact-card a.detail {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--clean-black);
+      word-break: break-word;
+    }
+    .contact-card a.detail:hover { color: var(--rose-deep); }
+    .contact-card p.small {
+      color: var(--text-muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .area-block {
+      background: var(--bg-light-pink);
+      border-radius: 18px;
+      padding: 36px 28px;
+      margin-top: 48px;
+      text-align: center;
+    }
+    .area-block h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+    .area-block p { color: var(--text-muted); max-width: 540px; margin: 0 auto; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-tagline.svg" alt="The Muscle Maid — We Lift the Dirt" />
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="https://clienthub.getjobber.com/hubs/c917ccc4-68cf-48dd-b42f-7f0e2696f60c/public/requests/4762090/new" target="_blank" rel="noopener">Get a Quote</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="hero-eyebrow">Contact</div>
+      <h1>Let's Lift the Dirt Together.</h1>
+      <p class="tagline">We'd love to help refresh your space.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CARDS -->
+  <section style="padding-top:48px">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>How to Reach Us</h2>
+        <p>Call, email, or request a quote online — we'll get back to you as soon as we can.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="icon">📞</div>
+          <h3>Call</h3>
+          <a class="detail" href="tel:+18287190477">(828) 719-0477</a>
+          <p class="small">We'll return calls within one business day.</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon">✉️</div>
+          <h3>Email</h3>
+          <a class="detail" href="mailto:themusclemaidllc@gmail.com">themusclemaidllc@gmail.com</a>
+          <p class="small">For quotes, questions, or scheduling.</p>
+        </div>
+
+        <div class="contact-card">
+          <div class="icon">📝</div>
+          <h3>Request a Quote</h3>
+          <a class="detail" href="https://clienthub.getjobber.com/hubs/c917ccc4-68cf-48dd-b42f-7f0e2696f60c/public/requests/4762090/new" target="_blank" rel="noopener">Book Online</a>
+          <p class="small">Fastest way to get on the schedule.</p>
+        </div>
+      </div>
+
+      <div class="area-block">
+        <h4>Service Area</h4>
+        <p>Proudly serving Groton, Connecticut and surrounding areas of Southeastern Connecticut and Rhode Island. Not sure if you're in our area? Reach out — we'd love to help.</p>
+      </div>
+
+      <div class="section-heading" style="margin-top:64px; margin-bottom:24px">
+        <div class="eyebrow">Follow Along</div>
+        <h2>See the Sparkle on Social</h2>
+      </div>
+      <div style="text-align:center">
+        <a class="btn btn-outline" href="https://www.instagram.com/themusclemaidllc/" target="_blank" rel="noopener" style="margin:0 8px 8px">Instagram</a>
+        <a class="btn btn-outline" href="https://www.tiktok.com/@the.muscle.maid" target="_blank" rel="noopener" style="margin:0 8px 8px">TikTok</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <h2>Ready for a Spotless Home?</h2>
+    <p class="script">Let's Lift the Dirt!</p>
+    <a class="btn btn-primary" href="https://clienthub.getjobber.com/hubs/c917ccc4-68cf-48dd-b42f-7f0e2696f60c/public/requests/4762090/new" target="_blank" rel="noopener">Request Your Quote</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="brand-block">
+          <img src="assets/logo-tagline.svg" alt="The Muscle Maid" />
+          <p>Strong cleaning. Seriously spotless homes. Proudly serving Groton and Southeastern CT & RI.</p>
+        </div>
+        <div>
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="https://clienthub.getjobber.com/hubs/c917ccc4-68cf-48dd-b42f-7f0e2696f60c/public/requests/4762090/new" target="_blank" rel="noopener">Request a Quote</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+18287190477">(828) 719-0477</a></li>
+            <li><a href="mailto:themusclemaidllc@gmail.com">themusclemaidllc@gmail.com</a></li>
+          </ul>
+          <div class="social-row">
+            <a href="https://www.instagram.com/themusclemaidllc/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.95c-3.14 0-3.5.01-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.33.97-.38 2.04-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.33 2.04.38 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.33-.97.38-2.04.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.07-.23-1.65-.38-2.04a3.4 3.4 0 0 0-.83-1.27 3.4 3.4 0 0 0-1.27-.83c-.39-.15-.97-.33-2.04-.38-1.24-.06-1.6-.07-4.74-.07zm0 3.32a4.57 4.57 0 1 1 0 9.14 4.57 4.57 0 0 1 0-9.14zm0 7.54a2.97 2.97 0 1 0 0-5.94 2.97 2.97 0 0 0 0 5.94zm5.83-7.72a1.07 1.07 0 1 1-2.14 0 1.07 1.07 0 0 1 2.14 0z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@the.muscle.maid" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.28 0 .56.04.82.12V9.4a6.36 6.36 0 0 0-1-.08A6.34 6.34 0 0 0 5.6 20.93a6.34 6.34 0 0 0 10.86-4.48v-7.4a8.18 8.18 0 0 0 4.77 1.52V7.13a4.85 4.85 0 0 1-1.64-.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 The Muscle Maid LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
