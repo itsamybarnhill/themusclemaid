@@ -1,0 +1,296 @@
+/* ============================================================
+   The Muscle Maid — Estimate Calculator styles
+   ------------------------------------------------------------
+   Every rule is scoped under .mm-calc so nothing here can leak
+   into index / services / about / contact. Uses the brand
+   variables already defined in styles.css (--maid-pink,
+   --rose-deep, --soft-blush, etc.) and the fonts styles.css
+   already imports (Playfair Display + Montserrat).
+
+   No changes to styles.css are required.
+   ============================================================ */
+
+.mm-calc-section { padding: 56px 0 80px; }
+
+.mm-calc {
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--clean-white);
+  border: 1px solid #f3e3e8;
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  padding: 40px 34px 34px;
+}
+
+/* styles.css sets `section { padding: 80px 0 }`, which would add huge
+   gaps inside the card — the screens are <section> elements. */
+.mm-calc .mm-screen { padding: 0; display: none; }
+.mm-calc .mm-screen.is-active { display: block; animation: mmFade .25s ease; }
+@keyframes mmFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Typography ---------- */
+.mm-calc h2.mm-h {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  line-height: 1.15;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.mm-calc h2.mm-h.left { text-align: left; }
+.mm-calc .mm-lede {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15.5px;
+  margin: 0 auto 24px;
+  max-width: 94%;
+}
+.mm-calc .mm-lede.left { text-align: left; margin-left: 0; }
+.mm-calc .mm-intro { font-size: 16px; color: var(--text-muted); margin: 0 0 26px; }
+
+/* ---------- Trust badges + steps (start screen) ---------- */
+.mm-calc .mm-badges {
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 10px 22px; margin: 26px 0 6px;
+}
+.mm-calc .mm-badge {
+  display: flex; align-items: center; gap: 7px;
+  font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+}
+.mm-calc .mm-badge svg { flex: none; }
+
+.mm-calc .mm-steps { margin-top: 34px; display: grid; gap: 20px; }
+.mm-calc .mm-step { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: start; }
+.mm-calc .mm-step-num {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--maid-pink); color: var(--clean-black);
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+}
+.mm-calc .mm-step-t {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 4px;
+}
+.mm-calc .mm-step-b { color: var(--text-muted); font-size: 14.5px; }
+
+/* ---------- Form controls ---------- */
+.mm-calc .mm-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: none; border: none; padding: 0; margin-bottom: 20px; cursor: pointer;
+  font-family: 'Montserrat', sans-serif; font-weight: 600;
+  font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted);
+}
+.mm-calc .mm-back:hover { color: var(--rose-deep); }
+
+.mm-calc .mm-field { margin-bottom: 18px; }
+.mm-calc .mm-label {
+  display: block;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; margin-bottom: 8px;
+}
+.mm-calc .mm-req { color: var(--rose-deep); }
+.mm-calc .mm-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mm-calc .mm-row-addr { display: grid; grid-template-columns: 2fr 1fr 1.1fr; gap: 10px; }
+
+.mm-calc input,
+.mm-calc select,
+.mm-calc textarea {
+  width: 100%; padding: 12px 13px;
+  border: 1px solid #e8d6dc; border-radius: 12px;
+  font-family: 'Montserrat', sans-serif; font-size: 15px;
+  color: var(--clean-black); background: #fffdfd;
+  transition: border-color .15s, box-shadow .15s;
+}
+.mm-calc textarea { resize: vertical; min-height: 88px; line-height: 1.6; }
+.mm-calc input:focus,
+.mm-calc select:focus,
+.mm-calc textarea:focus {
+  outline: none; border-color: var(--rose-dust);
+  box-shadow: 0 0 0 3px rgba(231, 161, 177, 0.25); background: var(--clean-white);
+}
+.mm-calc .mm-hint { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+.mm-calc .mm-counter { font-size: 12.5px; color: var(--text-muted); text-align: right; margin-top: 5px; }
+
+/* Full-width pill button, matching the site's .btn styling */
+.mm-calc .mm-btn {
+  display: block; width: 100%; padding: 15px 26px;
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+  border: none; border-radius: 999px; cursor: pointer;
+  background: var(--maid-pink); color: var(--clean-black);
+  box-shadow: var(--shadow-soft);
+  transition: transform .15s, background .2s;
+}
+.mm-calc .mm-btn:hover { background: var(--rose-dust); transform: translateY(-1px); }
+.mm-calc .mm-btn:disabled { opacity: .65; transform: none; cursor: default; }
+.mm-calc .mm-btn-center { width: auto; margin: 0 auto; }
+
+/* ---------- Add-ons ---------- */
+.mm-calc .mm-addon-head {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase; margin: 28px 0 12px;
+}
+.mm-calc .mm-addon {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  background: var(--clean-white);
+  border: 1px solid #f3e3e8; border-radius: 14px;
+  padding: 13px 15px; margin-bottom: 10px;
+  transition: border-color .15s, background .15s;
+}
+.mm-calc .mm-addon.is-on { border-color: var(--rose-dust); background: var(--bg-light-pink); }
+.mm-calc .mm-addon-name { font-weight: 600; font-size: 14.5px; }
+.mm-calc .mm-addon-sub { font-size: 12.8px; color: var(--text-muted); margin-top: 2px; }
+
+.mm-calc .mm-stepper { display: flex; align-items: center; gap: 5px; flex: none; }
+.mm-calc .mm-stepper button {
+  width: 34px; height: 34px; padding: 0;
+  border: 1px solid #e8d6dc; border-radius: 50%; background: var(--clean-white);
+  color: var(--rose-deep); font-family: inherit; font-size: 17px; font-weight: 700;
+  line-height: 1; cursor: pointer; transition: background .15s, border-color .15s;
+}
+.mm-calc .mm-stepper button:hover:not(:disabled) { background: var(--soft-blush); border-color: var(--rose-dust); }
+.mm-calc .mm-stepper button:disabled { color: #d8cdd0; cursor: default; }
+.mm-calc .mm-qty { min-width: 26px; text-align: center; font-weight: 700; font-size: 15px; }
+
+.mm-calc .mm-toggle {
+  flex: none; padding: 9px 20px; border-radius: 999px;
+  border: 1.5px solid var(--rose-dust); background: var(--clean-white); color: var(--rose-deep);
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 11.5px; letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer;
+}
+.mm-calc .mm-toggle.is-on { background: var(--maid-pink); color: var(--clean-black); border-color: var(--maid-pink); }
+
+/* ---------- Result ---------- */
+.mm-calc .mm-result-icon { text-align: center; margin-bottom: 12px; }
+.mm-calc .mm-price-box {
+  background: linear-gradient(135deg, var(--bg-light-pink) 0%, var(--soft-blush) 100%);
+  border-radius: 18px; padding: 26px 22px; text-align: center; margin-bottom: 28px;
+}
+.mm-calc .mm-price-label {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 11.5px; letter-spacing: 2.4px; text-transform: uppercase;
+  color: var(--rose-deep); margin-bottom: 6px;
+}
+.mm-calc .mm-price {
+  font-family: 'Playfair Display', serif; font-weight: 900;
+  font-size: clamp(2.4rem, 6vw, 3.2rem); line-height: 1.05; color: var(--clean-black);
+}
+.mm-calc .mm-price-meta { font-size: 14px; color: var(--text-muted); margin-top: 10px; }
+.mm-calc .mm-price-save { font-size: 14px; font-weight: 700; color: var(--rose-deep); margin-top: 10px; }
+.mm-calc .mm-price-note {
+  font-size: 13px; color: var(--text-muted); margin-top: 14px;
+  max-width: 420px; margin-left: auto; margin-right: auto;
+}
+
+.mm-calc .mm-inc-title {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 20px; margin: 0 0 16px;
+}
+.mm-calc .mm-inc { list-style: none; padding: 0; margin: 0 0 28px; display: grid; gap: 12px; }
+.mm-calc .mm-inc li {
+  display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
+  font-size: 15px; color: var(--text-muted);
+}
+.mm-calc .mm-inc svg { margin-top: 2px; }
+
+.mm-calc .mm-nav-card {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+  padding: 16px 18px; border-radius: 16px; margin-bottom: 12px;
+  font-family: 'Montserrat', sans-serif; cursor: pointer;
+  border: 1.5px solid transparent; transition: transform .15s, background .2s;
+}
+.mm-calc .mm-nav-card:hover { transform: translateY(-1px); }
+.mm-calc .mm-nav-card.solid { background: var(--maid-pink); color: var(--clean-black); box-shadow: var(--shadow-soft); }
+.mm-calc .mm-nav-card.solid:hover { background: var(--rose-dust); }
+.mm-calc .mm-nav-card.outline { background: var(--clean-white); border-color: var(--clean-black); }
+.mm-calc .mm-nav-card.outline:hover { background: var(--bg-light-pink); }
+.mm-calc .mm-nc-grow { flex: 1; min-width: 0; }
+.mm-calc .mm-nc-title { font-weight: 700; font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; }
+.mm-calc .mm-nc-sub { font-size: 13px; color: var(--text-muted); }
+.mm-calc .mm-nav-card.solid .mm-nc-sub { color: #5a4147; }
+
+/* ---------- Details / photo uploads ---------- */
+.mm-calc .mm-sec-head {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif; font-weight: 700; font-size: 19px;
+  margin: 30px 0 14px;
+}
+.mm-calc .mm-sec-head:first-of-type { margin-top: 10px; }
+
+.mm-calc .mm-photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.mm-calc .mm-photo-slot {
+  position: relative; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 7px;
+  min-height: 112px; padding: 14px 8px; text-align: center; cursor: pointer;
+  border: 1.6px dashed #e8d6dc; border-radius: 14px;
+  transition: border-color .15s, background .15s;
+}
+.mm-calc .mm-photo-slot:hover { border-color: var(--rose-dust); background: #fffdfd; }
+.mm-calc .mm-photo-slot.is-filled {
+  border-style: solid; border-color: var(--rose-dust); background: var(--bg-light-pink);
+}
+.mm-calc .mm-photo-slot input[type="file"] { display: none; }
+.mm-calc .mm-photo-name { font-size: 12.2px; font-weight: 600; }
+.mm-calc .mm-photo-tag {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase;
+  background: var(--soft-blush); color: var(--rose-deep);
+  padding: 3px 9px; border-radius: 999px;
+}
+.mm-calc .mm-photo-slot.is-filled .mm-photo-tag { background: var(--maid-pink); color: var(--clean-black); }
+.mm-calc .mm-photo-thumb { width: 100%; height: 54px; object-fit: cover; border-radius: 8px; display: none; }
+.mm-calc .mm-photo-slot.is-filled .mm-photo-thumb { display: block; }
+.mm-calc .mm-photo-slot.is-filled .mm-up-icon { display: none; }
+
+.mm-calc .mm-photo-remove {
+  display: none; position: absolute; top: 6px; right: 6px;
+  width: 25px; height: 25px; padding: 0; border-radius: 50%;
+  background: var(--clean-black); color: var(--clean-white);
+  border: 2px solid var(--clean-white); cursor: pointer;
+  font-family: inherit; font-size: 12px; font-weight: 700; line-height: 1;
+  align-items: center; justify-content: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,.25);
+}
+.mm-calc .mm-photo-slot.is-filled .mm-photo-remove { display: flex; }
+.mm-calc .mm-photo-remove:hover { background: var(--rose-deep); }
+
+/* ---------- Success summary ---------- */
+.mm-calc .mm-summary {
+  background: var(--bg-light-pink); border-radius: 18px;
+  padding: 6px 22px 20px; margin-top: 24px;
+}
+.mm-calc .mm-summary-title {
+  font-family: 'Playfair Display', serif; font-weight: 700;
+  font-size: 22px; text-align: center; color: var(--rose-deep); margin: 18px 0 4px;
+}
+.mm-calc .mm-sum-row {
+  display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: center;
+  padding: 14px 0; border-bottom: 1px solid #f0dde3;
+}
+.mm-calc .mm-sum-row:last-child { border-bottom: none; }
+.mm-calc .mm-sum-ico {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--maid-pink);
+  display: flex; align-items: center; justify-content: center; font-size: 15px;
+}
+.mm-calc .mm-sum-k {
+  font-family: 'Montserrat', sans-serif; font-size: 11px;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-muted);
+}
+.mm-calc .mm-sum-v { font-weight: 600; font-size: 15px; white-space: pre-line; }
+
+/* ---------- Errors ---------- */
+.mm-calc .mm-err {
+  display: none; background: #fff3f5; border: 1px solid #f3c9d2; border-radius: 12px;
+  color: #a3243c; font-size: 14px; padding: 12px 14px; margin: 4px 0 16px;
+}
+.mm-calc .mm-err.is-show { display: block; }
+.mm-calc .mm-center { text-align: center; }
+.mm-calc .mm-hidden { display: none !important; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 620px) {
+  .mm-calc { padding: 28px 20px 26px; border-radius: 18px; }
+  .mm-calc .mm-photo-grid { grid-template-columns: repeat(2, 1fr); }
+  .mm-calc .mm-row-addr { grid-template-columns: 1fr; }
+  .mm-calc .mm-addon { flex-wrap: wrap; }
+}

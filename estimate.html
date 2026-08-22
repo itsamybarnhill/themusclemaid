@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get an Instant Estimate — The Muscle Maid</title>
+  <meta name="description" content="Get an instant cleaning estimate from The Muscle Maid. Tell us about your home and see your price right away — no obligation, no callbacks." />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2" />
+  <link rel="alternate icon" href="assets/favicon.ico?v=2" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Calculator-only styles. Everything inside is scoped under .mm-calc -->
+  <link rel="stylesheet" href="estimate.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="brand-logo">
+        <img src="assets/logo-tagline.svg" alt="The Muscle Maid — We Lift the Dirt" />
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="estimate.html" class="active">Estimate</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="estimate.html">Get a Quote</a>
+    </div>
+  </header>
+
+  <!-- HERO (reuses the site's existing .about-hero styling) -->
+  <section class="about-hero">
+    <div class="container">
+      <div class="hero-eyebrow">Instant Estimate</div>
+      <h1>Get Your Cleaning Estimate</h1>
+      <p class="tagline">No obligation, no surprises.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CALCULATOR
+       All markup below lives inside #mm-calc. Styles come from
+       estimate.css, behavior from estimate.js.
+       ============================================================ -->
+  <section class="mm-calc-section">
+    <div class="container">
+      <div class="mm-calc" id="mm-calc">
+
+        <!-- ---------- SCREEN 1: START ---------- -->
+        <section class="mm-screen is-active" id="mm-screen-start">
+          <h2 class="mm-h">How It Works</h2>
+          <p class="mm-lede">Get a quick estimate from The Muscle Maid LLC — it takes about a minute.</p>
+
+          <div class="mm-center">
+            <button type="button" class="mm-btn mm-btn-center" data-mm-go="estimate">Get My Estimate</button>
+          </div>
+
+          <div class="mm-badges">
+            <span class="mm-badge"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#111"/><path d="M5.8 10.3l2.6 2.6 5.4-5.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Locally Owned</span>
+            <span class="mm-badge"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#111"/><path d="M5.8 10.3l2.6 2.6 5.4-5.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Fully Insured</span>
+            <span class="mm-badge"><svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="10" fill="#111"/><path d="M5.8 10.3l2.6 2.6 5.4-5.4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Satisfaction Guaranteed</span>
+          </div>
+
+          <div class="mm-steps">
+            <div class="mm-step">
+              <div class="mm-step-num">1</div>
+              <div><div class="mm-step-t">Tell us about your home</div><div class="mm-step-b">Choose your service and tell us a little about your space.</div></div>
+            </div>
+            <div class="mm-step">
+              <div class="mm-step-num">2</div>
+              <div><div class="mm-step-t">Get your personalized estimate</div><div class="mm-step-b">See your estimated price instantly — no waiting, no callbacks.</div></div>
+            </div>
+            <div class="mm-step">
+              <div class="mm-step-num">3</div>
+              <div><div class="mm-step-t">Request your booking</div><div class="mm-step-b">Send us your details and we'll be in touch shortly to confirm your quote and scheduling.</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ---------- SCREEN 2: INPUTS ---------- -->
+        <section class="mm-screen" id="mm-screen-estimate">
+          <button type="button" class="mm-back" data-mm-go="start">&larr; Back</button>
+          <p class="mm-intro">Answer a few quick questions and get an instant price estimate for your home.</p>
+
+          <div class="mm-field">
+            <label class="mm-label" for="mm-sqft">Square Footage <span class="mm-req">*</span></label>
+            <input type="number" id="mm-sqft" min="1" step="1" inputmode="numeric" placeholder="e.g. 1500" />
+          </div>
+
+          <div class="mm-row2">
+            <div class="mm-field">
+              <label class="mm-label" for="mm-beds">Bedrooms <span class="mm-req">*</span></label>
+              <input type="number" id="mm-beds" min="0" step="1" inputmode="numeric" placeholder="e.g. 3" />
+            </div>
+            <div class="mm-field">
+              <label class="mm-label" for="mm-baths">Bathrooms <span class="mm-req">*</span></label>
+              <input type="number" id="mm-baths" min="0.5" step="0.5" inputmode="decimal" placeholder="e.g. 2" />
+            </div>
+          </div>
+
+          <div class="mm-field">
+            <label class="mm-label" for="mm-cleanType">Type of Clean</label>
+            <select id="mm-cleanType">
+              <option value="standard">Standard Clean</option>
+              <option value="deep" selected>Deep Clean</option>
+              <option value="moveout">Move-In / Move-Out Clean</option>
+            </select>
+          </div>
+
+          <div class="mm-field" id="mm-buildupField">
+            <label class="mm-label" for="mm-buildup">Estimated Buildup Level</label>
+            <select id="mm-buildup">
+              <option value="light">Light — cleaned regularly, minimal buildup</option>
+              <option value="medium" selected>Medium — some visible dust, grime, or clutter</option>
+              <option value="heavy">Heavy — hasn't been deep cleaned in a while</option>
+            </select>
+          </div>
+
+          <div class="mm-field" id="mm-frequencyField">
+            <label class="mm-label" for="mm-frequency">How Often</label>
+            <select id="mm-frequency">
+              <option value="onetime">One-Time — just this once</option>
+              <option value="weekly">Weekly — save 20%</option>
+              <option value="biweekly">Every Other Week — save 15%</option>
+              <option value="monthly">Monthly — save 10%</option>
+            </select>
+            <div class="mm-hint">Recurring service discounts are available on Standard cleans only.</div>
+          </div>
+
+          <div class="mm-addon-head" id="mm-addonHead">Add-Ons</div>
+          <div id="mm-addonList"></div>
+
+          <div class="mm-err" id="mm-estimateError"></div>
+          <button type="button" class="mm-btn" id="mm-calcBtn">Calculate My Estimate</button>
+        </section>
+
+        <!-- ---------- SCREEN 3: RESULT ---------- -->
+        <section class="mm-screen" id="mm-screen-result">
+          <div class="mm-result-icon">
+            <svg width="86" height="60" viewBox="0 0 86 60" fill="none">
+              <circle cx="43" cy="30" r="20" fill="#F7B9C5"/>
+              <path d="M35 30.5l5.5 5.5L52 24.5" stroke="#111" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 12l1.6 4.4L21 18l-4.4 1.6L15 24l-1.6-4.4L9 18l4.4-1.6z" fill="#E7A1B1"/>
+              <path d="M69 36l1.3 3.5L74 41l-3.7 1.3L69 46l-1.3-3.7L64 41l3.7-1.5z" fill="#E7A1B1"/>
+            </svg>
+          </div>
+          <h2 class="mm-h">Here's Your Estimate!</h2>
+          <p class="mm-lede">Based on the details you provided, this is your estimated price.</p>
+
+          <div class="mm-price-box">
+            <div class="mm-price-label">Estimated Price</div>
+            <div class="mm-price" id="mm-priceOut">$0.00</div>
+            <div class="mm-price-meta" id="mm-priceMeta"></div>
+            <div class="mm-price-save" id="mm-priceSave" style="display:none"></div>
+            <div class="mm-price-note">This is an estimate based on the details provided. Final pricing is confirmed after we review your space.</div>
+          </div>
+
+          <div class="mm-inc-title" id="mm-incTitle">What's Included:</div>
+          <ul class="mm-inc" id="mm-incList"></ul>
+
+          <button type="button" class="mm-nav-card solid" data-mm-go="details">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#111" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#111" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span class="mm-nc-grow"><span class="mm-nc-title">Ready to Book?</span><br /><span class="mm-nc-sub">Request your booking and we'll be in touch soon!</span></span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M9 5l7 7-7 7" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+
+          <button type="button" class="mm-nav-card outline" data-mm-go="estimate">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M15 5l-7 7 7 7" stroke="#111" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="mm-nc-grow"><span class="mm-nc-title">Adjust My Estimate</span><br /><span class="mm-nc-sub">Go back and change your answers</span></span>
+          </button>
+        </section>
+
+        <!-- ---------- SCREEN 4: DETAILS ---------- -->
+        <section class="mm-screen" id="mm-screen-details">
+          <button type="button" class="mm-back" data-mm-go="result">&larr; Back</button>
+          <h2 class="mm-h left">Almost there!</h2>
+          <p class="mm-lede left">We'll use this info to confirm your estimate and schedule your service.</p>
+
+          <form id="mm-leadForm" novalidate>
+            <!-- ===== Web3Forms configuration ===== -->
+            <input type="hidden" name="access_key" value="e5f3eb7b-3af7-4496-8bc8-b483690aaf01" />
+            <input type="hidden" name="subject" value="New Cleaning Estimate Request — The Muscle Maid" />
+            <input type="hidden" name="from_name" value="The Muscle Maid Estimate Form" />
+            <!-- Honeypot: invisible to people, catches spam bots -->
+            <input type="checkbox" name="botcheck" class="mm-hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+            <!-- Estimate data carried into the submission -->
+            <input type="hidden" name="Estimated Price" id="mm-h-price" />
+            <input type="hidden" name="Service" id="mm-h-service" />
+            <input type="hidden" name="Square Footage" id="mm-h-sqft" />
+            <input type="hidden" name="Bedrooms" id="mm-h-beds" />
+            <input type="hidden" name="Bathrooms" id="mm-h-baths" />
+            <input type="hidden" name="Buildup Level" id="mm-h-buildup" />
+            <input type="hidden" name="Frequency" id="mm-h-frequency" />
+            <input type="hidden" name="Add-Ons" id="mm-h-addons" />
+            <input type="hidden" name="Price Breakdown" id="mm-h-breakdown" />
+
+            <div class="mm-sec-head">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-5.6 7-11a7 7 0 10-14 0c0 5.4 7 11 7 11z" stroke="#D88A9C" stroke-width="1.8"/><circle cx="12" cy="10" r="2.6" stroke="#D88A9C" stroke-width="1.8"/></svg>
+              Property Address <span class="mm-req">*</span>
+            </div>
+            <div class="mm-field">
+              <input type="text" name="Street Address" id="mm-street" placeholder="Street address" autocomplete="street-address" />
+            </div>
+            <div class="mm-field mm-row-addr">
+              <input type="text" name="City" id="mm-city" placeholder="City" autocomplete="address-level2" />
+              <input type="text" name="State" id="mm-state" placeholder="State" autocomplete="address-level1" />
+              <input type="text" name="ZIP" id="mm-zip" placeholder="ZIP" inputmode="numeric" autocomplete="postal-code" />
+            </div>
+
+            <div class="mm-sec-head">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="#D88A9C" stroke-width="1.8"/><path d="M4.5 20c.9-3.7 3.9-5.6 7.5-5.6s6.6 1.9 7.5 5.6" stroke="#D88A9C" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Your Information <span class="mm-req">*</span>
+            </div>
+            <div class="mm-field"><input type="text" name="name" id="mm-name" placeholder="Name" autocomplete="name" /></div>
+            <!-- Must stay named "email" for the Web3Forms autoresponder to work -->
+            <div class="mm-field"><input type="email" name="email" id="mm-email" placeholder="Email" autocomplete="email" /></div>
+            <div class="mm-field"><input type="tel" name="phone" id="mm-phone" placeholder="Phone" autocomplete="tel" /></div>
+
+            <div class="mm-sec-head">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="#D88A9C" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Special Requests or Areas of Concern
+            </div>
+            <div class="mm-field">
+              <textarea name="Special Requests" id="mm-concerns" maxlength="400" placeholder="Pets, problem areas, anything we should know…"></textarea>
+              <div class="mm-counter"><span id="mm-charCount">0</span> / 400</div>
+            </div>
+
+            <div class="mm-sec-head">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="3" stroke="#D88A9C" stroke-width="1.8"/><circle cx="12" cy="13.5" r="3.4" stroke="#D88A9C" stroke-width="1.8"/><path d="M9 7l1.5-2.5h3L15 7" stroke="#D88A9C" stroke-width="1.8" stroke-linejoin="round"/></svg>
+              Upload Photos <span style="font-weight:400;font-size:14px;color:var(--text-muted)">(optional but helpful)</span>
+            </div>
+            <p class="mm-hint" style="margin-top:-6px">Photos help us confirm your estimate and make sure we come prepared.</p>
+            <div class="mm-photo-grid" id="mm-photoGrid"></div>
+
+            <div class="mm-err" id="mm-detailsError" style="margin-top:20px"></div>
+            <button type="submit" class="mm-btn" id="mm-submitBtn" style="margin-top:22px">Send My Request</button>
+            <p class="mm-hint mm-center" style="margin-top:12px">We'll review your details and photos, then confirm your quote.</p>
+          </form>
+        </section>
+
+        <!-- ---------- SCREEN 5: SUCCESS ---------- -->
+        <section class="mm-screen" id="mm-screen-success">
+          <div class="mm-result-icon">
+            <svg width="86" height="60" viewBox="0 0 86 60" fill="none">
+              <circle cx="43" cy="30" r="20" fill="#F7B9C5"/>
+              <path d="M35 30.5l5.5 5.5L52 24.5" stroke="#111" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15 12l1.6 4.4L21 18l-4.4 1.6L15 24l-1.6-4.4L9 18l4.4-1.6z" fill="#E7A1B1"/>
+              <path d="M69 36l1.3 3.5L74 41l-3.7 1.3L69 46l-1.3-3.7L64 41l3.7-1.5z" fill="#E7A1B1"/>
+            </svg>
+          </div>
+          <h2 class="mm-h">Success!</h2>
+          <p class="mm-lede">Your cleaning request has been received. Thank you for choosing The Muscle Maid — we'll review your details and photos to confirm your estimate, and you'll hear from us shortly.</p>
+
+          <div class="mm-summary">
+            <div class="mm-summary-title">Request Summary</div>
+            <div id="mm-summaryRows"></div>
+          </div>
+
+          <p class="mm-hint mm-center" style="margin-top:24px">
+            Questions in the meantime? Call <a href="tel:+18287190477" style="color:var(--rose-deep);font-weight:600">(828) 719-0477</a>.
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="brand-block">
+          <img src="assets/logo-tagline.svg" alt="The Muscle Maid" />
+          <p>Strong cleaning. Seriously spotless homes. Proudly serving Groton and Southeastern CT &amp; RI.</p>
+        </div>
+        <div>
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="estimate.html">Instant Estimate</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5>Contact</h5>
+          <ul>
+            <li><a href="tel:+18287190477">(828) 719-0477</a></li>
+            <li><a href="mailto:themusclemaidllc@gmail.com">themusclemaidllc@gmail.com</a></li>
+          </ul>
+          <div class="social-row">
+            <a href="https://www.instagram.com/themusclemaidllc/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.95c-3.14 0-3.5.01-4.74.07-1.07.05-1.65.23-2.04.38-.51.2-.88.44-1.27.83-.39.39-.63.76-.83 1.27-.15.39-.33.97-.38 2.04-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.07.23 1.65.38 2.04.2.51.44.88.83 1.27.39.39.76.63 1.27.83.39.15.97.33 2.04.38 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.07-.05 1.65-.23 2.04-.38.51-.2.88-.44 1.27-.83.39-.39.63-.76.83-1.27.15-.39.33-.97.38-2.04.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.07-.23-1.65-.38-2.04a3.4 3.4 0 0 0-.83-1.27 3.4 3.4 0 0 0-1.27-.83c-.39-.15-.97-.33-2.04-.38-1.24-.06-1.6-.07-4.74-.07zm0 3.32a4.57 4.57 0 1 1 0 9.14 4.57 4.57 0 0 1 0-9.14zm0 7.54a2.97 2.97 0 1 0 0-5.94 2.97 2.97 0 0 0 0 5.94zm5.83-7.72a1.07 1.07 0 1 1-2.14 0 1.07 1.07 0 0 1 2.14 0z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@the.muscle.maid" target="_blank" rel="noopener" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64c.28 0 .56.04.82.12V9.4a6.36 6.36 0 0 0-1-.08A6.34 6.34 0 0 0 5.6 20.93a6.34 6.34 0 0 0 10.86-4.48v-7.4a8.18 8.18 0 0 0 4.77 1.52V7.13a4.85 4.85 0 0 1-1.64-.44z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 The Muscle Maid LLC. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="estimate.js" defer></script>
+</body>
+</html>
