@@ -14,14 +14,14 @@
 
   var RATES = {
     base: 0.23,                                              // per sq ft, applied to every job
-    buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — NOT applied to Standard
-    cleanType: { deep: 0.15, moveout: 0.18 },                // per sq ft — Standard is base rate only
-    frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Standard cleans only
+    buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — NOT applied to Maintenance
+    cleanType: { deep: 0.15, moveout: 0.18 },                // per sq ft — Maintenance is base rate only
+    frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Maintenance cleans only
   };
 
   /* qty:true  -> +/- stepper, 0..max
      qty:false -> single on/off toggle
-     standardOnly:true -> hidden on Deep (which already includes appliance interiors) */
+     standardOnly:true -> Maintenance only; hidden on Deep (which already includes appliance interiors) */
   var ADDONS = [
     { id: 'linens',  name: 'Change Bed Linens',         sub: '+$10 per bed, limit 6',             price: 10, max: 6,  qty: true },
     { id: 'laundry', name: 'Laundry — Fold Only',       sub: '+$10 per load, limit 3 loads',      price: 10, max: 3,  qty: true },
@@ -33,7 +33,7 @@
 
   var SERVICE_INFO = {
     standard: {
-      label: 'Standard Clean',
+      label: 'Maintenance Clean',
       bullets: [
         'Routine cleaning of kitchens, bathrooms, bedrooms, and living areas',
         'Dusting and wiping of accessible surfaces and fixtures',
@@ -44,7 +44,7 @@
     deep: {
       label: 'Deep Clean',
       bullets: [
-        'Includes everything in a Standard Clean with an added level of detail',
+        'Includes everything in a Maintenance Clean with an added level of detail',
         'Detailed cleaning of buildup, fixtures, trim, baseboards, and commonly overlooked areas',
         'Interior and exterior cleaning of major kitchen appliances',
         'Ideal for first-time service, seasonal cleaning, or getting a home back to a maintainable baseline'
@@ -370,7 +370,7 @@
     $('mm-h-sqft').value      = r.sqft.toLocaleString() + ' sq ft';
     $('mm-h-beds').value      = $('mm-beds').value;
     $('mm-h-baths').value     = $('mm-baths').value;
-    $('mm-h-buildup').value   = r.isStd ? 'N/A (Standard Clean)' : BUILDUP_LABEL[r.bu];
+    $('mm-h-buildup').value   = r.isStd ? 'N/A (Maintenance Clean)' : BUILDUP_LABEL[r.bu];
     $('mm-h-frequency').value = r.isStd ? FREQ_LABEL[r.fq] : 'One-Time';
     $('mm-h-addons').value    = r.addonLines.length ? r.addonLines.join(', ') : 'None';
 
