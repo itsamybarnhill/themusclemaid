@@ -13,9 +13,9 @@
   /* ---------- 1. PRICING ---------- */
 
   var RATES = {
-    base: 0.23,                                              // per sq ft, applied to every job
+    base: 0.20,                                              // per sq ft, applied to every job
     buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — NOT applied to Maintenance
-    cleanType: { deep: 0.15, moveout: 0.18 },                // per sq ft — Maintenance is base rate only
+    cleanType: { deep: 0.15, moveout: 0.20 },                // per sq ft — Maintenance is base rate only
     frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Maintenance cleans only
   };
 
