@@ -13,9 +13,11 @@
   /* ---------- 1. PRICING ---------- */
 
   var RATES = {
-    base: 0.20,                                              // per sq ft, applied to every job
-    buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — NOT applied to Maintenance
-    cleanType: { deep: 0.15, moveout: 0.20 },                // per sq ft — Maintenance is base rate only
+    base: 0.20,                                              // per sq ft — Deep & Move-Out only
+    buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — added to base on Deep & Move-Out
+    // Maintenance has its own all-in rate by buildup level; it does NOT use base.
+    maintenance: { light: 0.12, medium: 0.15, heavy: 0.18 }, // per sq ft, total
+    cleanType: { deep: 0.15, moveout: 0.20 },                // per sq ft — added to base
     frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Maintenance cleans only
   };
 
@@ -160,7 +162,7 @@
     var isStd = ct === 'standard';
     var isMove = ct === 'moveout';
 
-    $('mm-buildupField').style.display = isStd ? 'none' : '';
+    $('mm-buildupField').style.display = '';   // buildup now affects all three services
     $('mm-frequencyField').style.display = isStd ? '' : 'none';
     $('mm-addonHead').style.display = isMove ? 'none' : '';
 
@@ -180,9 +182,10 @@
     var fq = $('mm-frequency').value;
     var isStd = ct === 'standard';
 
-    var buildupRate = isStd ? 0 : RATES.buildup[bu];
-    var cleanRate   = isStd ? 0 : RATES.cleanType[ct];
-    var cleaning    = sqft * (RATES.base + buildupRate + cleanRate);
+    // Maintenance is priced off its own all-in rate; Deep and Move-Out build up from base.
+    var rate = isStd ? RATES.maintenance[bu]
+                     : RATES.base + RATES.buildup[bu] + RATES.cleanType[ct];
+    var cleaning = sqft * rate;
 
     // Recurring discount applies to the cleaning only — never to add-ons.
     var discRate = isStd ? RATES.frequency[fq] : 0;
@@ -200,7 +203,7 @@
     });
 
     return {
-      sqft: sqft, ct: ct, bu: bu, fq: fq, isStd: isStd,
+      sqft: sqft, ct: ct, bu: bu, fq: fq, isStd: isStd, rate: rate,
       cleaning: cleaning, discRate: discRate, discount: discount,
       addonTotal: addonTotal, addonLines: addonLines,
       total: cleaning - discount + addonTotal
@@ -231,7 +234,7 @@
     $('mm-priceOut').textContent = money.format(r.total);
 
     var meta = [r.sqft.toLocaleString() + ' sq ft', SERVICE_INFO[r.ct].label];
-    if (!r.isStd) meta.push(BUILDUP_LABEL[r.bu] + ' buildup');
+    meta.push(BUILDUP_LABEL[r.bu] + ' buildup');
     if (r.isStd && r.discRate > 0) meta.push(FREQ_LABEL[r.fq]);
     meta.push(beds + (beds === 1 ? ' bed' : ' beds'));
     meta.push(baths + (baths === 1 ? ' bath' : ' baths'));
@@ -370,7 +373,7 @@
     $('mm-h-sqft').value      = r.sqft.toLocaleString() + ' sq ft';
     $('mm-h-beds').value      = $('mm-beds').value;
     $('mm-h-baths').value     = $('mm-baths').value;
-    $('mm-h-buildup').value   = r.isStd ? 'N/A (Maintenance Clean)' : BUILDUP_LABEL[r.bu];
+    $('mm-h-buildup').value   = BUILDUP_LABEL[r.bu];
     $('mm-h-frequency').value = r.isStd ? FREQ_LABEL[r.fq] : 'One-Time';
     $('mm-h-addons').value    = r.addonLines.length ? r.addonLines.join(', ') : 'None';
 
@@ -388,7 +391,7 @@
       ['Service', SERVICE_INFO[r.ct].label],
       ['Home Size', r.sqft.toLocaleString() + ' sq ft\n' + $('mm-beds').value + ' beds, ' + $('mm-baths').value + ' baths']
     ];
-    if (!r.isStd) rows.push(['Buildup Level', BUILDUP_LABEL[r.bu]]);
+    rows.push(['Buildup Level', BUILDUP_LABEL[r.bu]]);
     if (r.isStd) rows.push(['Frequency', FREQ_LABEL[r.fq]]);
     rows.push(['Add-Ons', r.addonLines.length ? r.addonLines.join(', ') : 'None']);
 
