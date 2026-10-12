@@ -231,6 +231,46 @@
             </div>
 
             <div class="mm-sec-head">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="3" stroke="#D88A9C" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#D88A9C" stroke-width="1.8" stroke-linecap="round"/></svg>
+              Scheduling Preferences
+            </div>
+            <p class="mm-hint" style="margin-top:-6px">Let us know when works best. We'll confirm actual availability when we follow up &mdash; nothing is booked yet.</p>
+
+            <div class="mm-field" style="margin-top:14px">
+              <label class="mm-label" for="mm-timeframe">How soon do you need this?</label>
+              <select id="mm-timeframe" name="Timeframe">
+                <option value="">Select one&hellip;</option>
+                <option>As soon as possible</option>
+                <option>Within 2 weeks</option>
+                <option>Within a month</option>
+                <option>Just planning ahead</option>
+              </select>
+            </div>
+
+            <div class="mm-field" id="mm-moveDateField">
+              <label class="mm-label" for="mm-moveDate">Move-In / Move-Out Date</label>
+              <input type="date" id="mm-moveDate" name="Move Date" />
+              <div class="mm-hint">If you have a hard deadline &mdash; lease end, closing day &mdash; tell us here.</div>
+            </div>
+
+            <div class="mm-field">
+              <span class="mm-label">Preferred Days <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:13px;color:var(--text-muted)">(tap all that apply)</span></span>
+              <div class="mm-days" id="mm-days"></div>
+              <input type="hidden" name="Preferred Days" id="mm-h-days" />
+              <div class="mm-hint">We're open Tuesday through Saturday.</div>
+            </div>
+
+            <div class="mm-field">
+              <label class="mm-label" for="mm-timeOfDay">Preferred Time of Day</label>
+              <select id="mm-timeOfDay" name="Time of Day">
+                <option value="">Select one&hellip;</option>
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+
+            <div class="mm-sec-head">
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="3" stroke="#D88A9C" stroke-width="1.8"/><circle cx="12" cy="13.5" r="3.4" stroke="#D88A9C" stroke-width="1.8"/><path d="M9 7l1.5-2.5h3L15 7" stroke="#D88A9C" stroke-width="1.8" stroke-linejoin="round"/></svg>
               Upload Photos <span style="font-weight:400;font-size:14px;color:var(--text-muted)">(optional but helpful)</span>
             </div>

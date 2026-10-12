@@ -72,6 +72,13 @@
     { id: 'concern', label: 'Any area of concern' }
   ];
 
+  // Closed Sunday and Monday, so those are not offered.
+  var DAYS = [
+    { id: 'Tuesday', short: 'Tue' }, { id: 'Wednesday', short: 'Wed' },
+    { id: 'Thursday', short: 'Thu' }, { id: 'Friday', short: 'Fri' },
+    { id: 'Saturday', short: 'Sat' }, { id: 'Flexible', short: "I'm flexible" }
+  ];
+
   var BUILDUP_LABEL = { light: 'Light', medium: 'Medium', heavy: 'Heavy' };
   var FREQ_LABEL = { onetime: 'One-Time', weekly: 'Weekly', biweekly: 'Every Other Week', monthly: 'Monthly' };
 
@@ -83,7 +90,7 @@
 
   /* ---------- 2. STATE + HELPERS ---------- */
 
-  var state = { addons: {}, photos: {}, last: null };
+  var state = { addons: {}, photos: {}, days: {}, last: null };
   ADDONS.forEach(function (a) { state.addons[a.id] = 0; });
 
   function $(id) { return document.getElementById(id); }
@@ -165,6 +172,10 @@
     $('mm-buildupField').style.display = '';   // buildup now affects all three services
     $('mm-frequencyField').style.display = isStd ? '' : 'none';
     $('mm-addonHead').style.display = isMove ? 'none' : '';
+
+    // Hard-deadline date only matters for a move-in/move-out job.
+    $('mm-moveDateField').style.display = isMove ? '' : 'none';
+    if (!isMove) $('mm-moveDate').value = '';   // hidden fields still submit, so clear it
 
     // Clear anything that no longer applies, so a stale quantity can never be charged.
     ADDONS.forEach(function (a) {
@@ -271,6 +282,37 @@
 
   /* ---------- 5. PHOTOS ---------- */
 
+  /* ---------- 5a. SCHEDULING ---------- */
+
+  function selectedDays() {
+    return DAYS.filter(function (d) { return state.days[d.id]; }).map(function (d) { return d.id; });
+  }
+
+  function renderDays() {
+    var wrap = $('mm-days');
+    wrap.innerHTML = '';
+    DAYS.forEach(function (d) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'mm-day' + (state.days[d.id] ? ' is-on' : '');
+      b.textContent = d.short;
+      b.setAttribute('aria-pressed', state.days[d.id] ? 'true' : 'false');
+      b.onclick = function () {
+        if (d.id === 'Flexible') {
+          // "Flexible" and specific days are mutually exclusive.
+          var on = !state.days.Flexible;
+          state.days = {};
+          if (on) state.days.Flexible = true;
+        } else {
+          state.days[d.id] = !state.days[d.id];
+          delete state.days.Flexible;
+        }
+        renderDays();
+      };
+      wrap.appendChild(b);
+    });
+  }
+
   function buildPhotoSlots() {
     var grid = $('mm-photoGrid');
     PHOTO_SLOTS.forEach(function (slot) {
@@ -376,6 +418,8 @@
     $('mm-h-buildup').value   = BUILDUP_LABEL[r.bu];
     $('mm-h-frequency').value = r.isStd ? FREQ_LABEL[r.fq] : 'One-Time';
     $('mm-h-addons').value    = r.addonLines.length ? r.addonLines.join(', ') : 'None';
+    var days = selectedDays();
+    $('mm-h-days').value      = days.length ? days.join(', ') : 'No preference given';
 
     var bd = 'Cleaning: ' + money.format(r.cleaning);
     if (r.discount > 0) bd += ' | Recurring discount (' + Math.round(r.discRate * 100) + '%): -' + money.format(r.discount);
@@ -402,6 +446,15 @@
 
     var concerns = $('mm-concerns').value.trim();
     if (concerns) rows.push(['Special Requests', concerns]);
+
+    var tf = $('mm-timeframe').value;
+    if (tf) rows.push(['Timeframe', tf]);
+    var md = $('mm-moveDate').value;
+    if (md) rows.push(['Move-In / Move-Out Date', md]);
+    var days = selectedDays();
+    if (days.length) rows.push(['Preferred Days', days.join(', ')]);
+    var tod = $('mm-timeOfDay').value;
+    if (tod) rows.push(['Preferred Time', tod]);
 
     var n = Object.keys(state.photos).length;
     rows.push(['Photos Uploaded', n ? n + (n === 1 ? ' photo' : ' photos') : 'None']);
@@ -497,6 +550,7 @@
       $('mm-charCount').textContent = e.target.value.length;
     });
 
+    renderDays();
     buildPhotoSlots();
     syncFields();
   }
