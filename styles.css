@@ -623,9 +623,8 @@ section { padding: 80px 0; }
 }
 
 .site-footer .brand-block img {
-  height: 80px;
+  height: 110px;
   width: auto;
-  filter: brightness(0) invert(1);
   margin-bottom: 14px;
 }
 
