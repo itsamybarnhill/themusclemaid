@@ -408,6 +408,14 @@
 
   /* ---------- 6. SUBMIT ---------- */
 
+  /* One phrasing for both the lead email and the customer's summary. */
+  function photoSummary() {
+    var shot = PHOTO_SLOTS.filter(function (sl) { return state.photos[sl.id]; })
+                          .map(function (sl) { return sl.label; });
+    if (!shot.length) return 'None';
+    return shot.length + (shot.length === 1 ? ' photo' : ' photos') + ' — ' + shot.join(', ');
+  }
+
   function fillHidden() {
     var r = state.last || priceIt();
     $('mm-h-price').value     = money.format(r.total);
@@ -426,6 +434,7 @@
     if (r.addonTotal > 0) bd += ' | Add-ons: ' + money.format(r.addonTotal);
     bd += ' | TOTAL: ' + money.format(r.total);
     $('mm-h-breakdown').value = bd;
+    $('mm-h-photos').value    = photoSummary();
   }
 
   function renderSummary() {
@@ -456,8 +465,7 @@
     var tod = $('mm-timeOfDay').value;
     if (tod) rows.push(['Preferred Time', tod]);
 
-    var n = Object.keys(state.photos).length;
-    rows.push(['Photos Uploaded', n ? n + (n === 1 ? ' photo' : ' photos') : 'None']);
+    rows.push(['Photos Uploaded', photoSummary()]);
 
     var wrap = $('mm-summaryRows');
     wrap.innerHTML = '';
@@ -525,7 +533,7 @@
           showErr(err, 'That took too long to send. Please check your connection and try again.');
         } else {
           showErr(err, 'Could not send your request: ' + ex.message
-            + ' — please try again, or call us at (828) 719-0477.');
+            + ' — please try again, or call us at (860) 287-8700.');
         }
         err.scrollIntoView({ behavior: 'smooth', block: 'center' });
         btn.disabled = false;
