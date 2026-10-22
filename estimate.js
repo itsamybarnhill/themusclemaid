@@ -12,12 +12,16 @@
 
   /* ---------- 1. PRICING ---------- */
 
+  /* All-in rate per square foot, by service and buildup level.
+     These are TOTAL rates — nothing is added on top. To change a price,
+     edit the number here; the three keys must stay standard / deep / moveout
+     to match the Type of Clean dropdown in estimate.html. */
   var RATES = {
-    base: 0.20,                                              // per sq ft — Deep & Move-Out only
-    buildup:   { light: 0.05, medium: 0.10, heavy: 0.15 },   // per sq ft — added to base on Deep & Move-Out
-    // Maintenance has its own all-in rate by buildup level; it does NOT use base.
-    maintenance: { light: 0.12, medium: 0.15, heavy: 0.18 }, // per sq ft, total
-    cleanType: { deep: 0.15, moveout: 0.20 },                // per sq ft — added to base
+    rate: {
+      standard: { light: 0.12, medium: 0.15, heavy: 0.18 },  // Maintenance Clean
+      deep:     { light: 0.30, medium: 0.33, heavy: 0.36 },  // Deep Clean
+      moveout:  { light: 0.42, medium: 0.45, heavy: 0.48 }   // Move-In / Move-Out Clean
+    },
     frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Maintenance cleans only
   };
 
@@ -193,9 +197,8 @@
     var fq = $('mm-frequency').value;
     var isStd = ct === 'standard';
 
-    // Maintenance is priced off its own all-in rate; Deep and Move-Out build up from base.
-    var rate = isStd ? RATES.maintenance[bu]
-                     : RATES.base + RATES.buildup[bu] + RATES.cleanType[ct];
+    // One all-in rate per service + buildup combination.
+    var rate = RATES.rate[ct][bu];
     var cleaning = sqft * rate;
 
     // Recurring discount applies to the cleaning only — never to add-ons.
