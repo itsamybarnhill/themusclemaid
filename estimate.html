@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
   <link rel="stylesheet" href="styles.css?v=3" />
   <!-- Calculator-only styles. Everything inside is scoped under .mm-calc -->
-  <link rel="stylesheet" href="estimate.css" />
+  <link rel="stylesheet" href="estimate.css?v=2" />
 </head>
 <body>
 
@@ -278,6 +278,11 @@
             <p class="mm-hint" style="margin-top:-6px">Photos help us confirm your estimate and make sure we come prepared.</p>
             <div class="mm-photo-grid" id="mm-photoGrid"></div>
 
+            <label class="mm-ack" for="mm-ack">
+              <input type="checkbox" id="mm-ack" name="Estimate Acknowledgment" value="Agreed: online estimates are preliminary; an in-person walkthrough may be requested to confirm scope and final pricing" />
+              <span>I understand that online estimates are preliminary and that The Muscle Maid may request an in-person walkthrough to confirm the scope of work and final pricing. <span class="mm-req">*</span></span>
+            </label>
+
             <div class="mm-err" id="mm-detailsError" style="margin-top:20px"></div>
             <button type="submit" class="mm-btn" id="mm-submitBtn" style="margin-top:22px">Send My Request</button>
             <p class="mm-hint mm-center" style="margin-top:12px">We'll review your details and photos, then confirm your quote.</p>
@@ -349,6 +354,6 @@
     </div>
   </footer>
 
-  <script src="estimate.js" defer></script>
+  <script src="estimate.js?v=2" defer></script>
 </body>
 </html>

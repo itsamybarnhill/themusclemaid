@@ -496,6 +496,11 @@
       showErr(err, "That email address doesn't look right — please check it.");
       return;
     }
+    if (!$('mm-ack').checked) {
+      showErr(err, 'Please check the box to confirm you understand online estimates are preliminary.');
+      $('mm-ack').focus();
+      return;
+    }
     err.classList.remove('is-show');
 
     fillHidden();

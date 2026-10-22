@@ -298,6 +298,17 @@
   color: #a3243c; font-size: 14px; padding: 12px 14px; margin: 4px 0 16px;
 }
 .mm-calc .mm-err.is-show { display: block; }
+/* ---------- Acknowledgment checkbox ---------- */
+.mm-calc .mm-ack {
+  display: flex; align-items: flex-start; gap: 12px; cursor: pointer;
+  margin-top: 26px; padding: 14px 16px;
+  background: var(--bg-light-pink); border: 1px solid #f3dde3; border-radius: 12px;
+  font-size: 14px; line-height: 1.55; color: var(--clean-black);
+}
+.mm-calc .mm-ack input[type="checkbox"] {
+  width: 20px; height: 20px; flex: 0 0 20px; margin: 1px 0 0; padding: 0;
+  accent-color: var(--rose-deep); cursor: pointer;
+}
 .mm-calc .mm-center { text-align: center; }
 .mm-calc .mm-hidden { display: none !important; }
 
