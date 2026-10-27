@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://themusclemaid.com/sitemap.xml

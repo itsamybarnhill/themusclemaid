@@ -5,6 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — The Muscle Maid</title>
   <meta name="description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
+  <link rel="canonical" href="https://themusclemaid.com/contact.html" />
+  <!-- Link previews (Facebook, iMessage, texts, etc.) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="The Muscle Maid" />
+  <meta property="og:title" content="Contact — The Muscle Maid" />
+  <meta property="og:description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
+  <meta property="og:url" content="https://themusclemaid.com/contact.html" />
+  <meta property="og:image" content="https://themusclemaid.com/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Pink cleaning bucket with a The Muscle Maid towel, brush, spray bottle, and sponge" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact — The Muscle Maid" />
+  <meta name="twitter:description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
+  <meta name="twitter:image" content="https://themusclemaid.com/assets/og-image.jpg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2" />
   <link rel="alternate icon" href="assets/favicon.ico?v=2" />
@@ -76,9 +92,32 @@
       margin-bottom: 8px;
     }
     .area-block p { color: var(--text-muted); max-width: 540px; margin: 0 auto; }
+    .area-cols {
+      display: grid; grid-template-columns: 1.6fr 1fr; gap: 36px;
+      margin-top: 32px; text-align: left;
+    }
+    .area-col h5 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--rose-deep);
+      margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #f3dde3;
+    }
+    .area-col h6 {
+      font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px;
+      margin: 22px 0 10px; color: var(--clean-black);
+    }
+    .area-col h6 span { font-weight: 400; color: var(--text-muted); }
+    .town-list {
+      list-style: none; padding: 0; margin: 0;
+      columns: 3 150px; column-gap: 20px;
+    }
+    .area-col:last-child .town-list { columns: 2 140px; }
+    .town-list li { font-size: 14px; color: var(--text-muted); padding: 3px 0; break-inside: avoid; }
 
     @media (max-width: 900px) {
       .contact-grid { grid-template-columns: 1fr; }
+      .area-cols { grid-template-columns: 1fr; gap: 32px; }
+      .area-block { padding: 32px 20px; }
+      .town-list, .area-col:last-child .town-list { columns: 2; }
     }
   </style>
 </head>
@@ -88,7 +127,7 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand-logo">
-        <img src="assets/logo-tagline.svg" alt="The Muscle Maid — We Lift the Dirt" />
+        <img src="assets/logo-header.png" width="126" height="168" alt="The Muscle Maid — We Lift the Dirt" />
       </a>
       <nav class="main-nav">
         <a href="index.html">Home</a>
@@ -142,9 +181,24 @@
         </div>
       </div>
 
-      <div class="area-block">
+      <div class="area-block" id="service-area">
         <h4>Service Area</h4>
-        <p>Proudly serving Groton, Connecticut and surrounding areas of Southeastern Connecticut and Rhode Island. Not sure if you're in our area? Reach out — we'd love to help.</p>
+        <p>Based in Groton, Connecticut, The Muscle Maid serves homes within about 40 minutes&rsquo; drive across Southeastern Connecticut and Southern Rhode Island. Not sure if you&rsquo;re in our area? Reach out &mdash; we&rsquo;d love to help.</p>
+
+        <div class="area-cols">
+          <div class="area-col">
+            <h5>Connecticut</h5>
+            <ul class="town-list"><li>Groton</li><li>City of Groton</li><li>Groton Long Point</li><li>Noank</li><li>Mystic</li><li>West Mystic</li><li>Old Mystic</li><li>Poquonnock Bridge</li><li>Long Hill</li><li>Center Groton</li><li>Burnett&rsquo;s Corner</li><li>Ledyard</li><li>Gales Ferry</li><li>Mashantucket</li><li>New London</li><li>Waterford</li><li>Quaker Hill</li><li>Jordan Village</li><li>Stonington</li><li>Stonington Borough</li><li>Pawcatuck</li><li>Lords Point</li><li>Wequetequock</li><li>North Stonington</li><li>East Lyme</li><li>Niantic</li><li>Flanders</li><li>Montville</li><li>Uncasville</li><li>Oakdale</li><li>Mohegan</li><li>Norwich</li><li>Norwichtown</li><li>Taftville</li><li>Yantic</li><li>Greenville</li><li>Occum</li><li>Laurel Hill</li><li>Preston</li><li>Preston City</li><li>Poquetanuck</li><li>Old Lyme</li><li>Lyme</li><li>Salem</li><li>Old Saybrook</li><li>Saybrook Point</li><li>Fenwick</li><li>Bozrah</li><li>Lisbon</li><li>Griswold</li><li>Jewett City</li><li>Voluntown</li></ul>
+            <h6>Also Serving <span>(depending on address &amp; job size)</span></h6>
+            <ul class="town-list"><li>Westbrook</li><li>Essex</li><li>Essex Village</li><li>Ivoryton</li><li>Centerbrook</li><li>Deep River</li><li>Colchester</li><li>Westchester</li><li>Lebanon</li><li>Franklin</li><li>Sprague</li><li>Baltic</li><li>Hanover</li><li>Versailles</li><li>Canterbury</li><li>Plainfield</li><li>Central Village</li><li>Moosup</li><li>Wauregan</li><li>Sterling</li><li>Clinton</li></ul>
+          </div>
+          <div class="area-col">
+            <h5>Rhode Island</h5>
+            <ul class="town-list"><li>Westerly</li><li>Watch Hill</li><li>Misquamicut</li><li>Weekapaug</li><li>Dunn&rsquo;s Corners</li><li>Bradford</li><li>Ashaway</li><li>Hopkinton</li><li>Hope Valley</li><li>Rockville</li><li>Wood River Junction</li></ul>
+            <h6>Also Serving <span>(depending on address &amp; job size)</span></h6>
+            <ul class="town-list"><li>Charlestown</li><li>Carolina</li><li>Shannock</li><li>Quonochontaug</li><li>Cross Mills</li><li>Wyoming</li><li>Richmond</li></ul>
+          </div>
+        </div>
       </div>
 
       <div class="section-heading" style="margin-top:64px; margin-bottom:24px">
@@ -170,8 +224,8 @@
     <div class="container">
       <div class="footer-grid">
         <div class="brand-block">
-          <img src="assets/transparent-logo.svg" alt="The Muscle Maid" />
-          <p>Strong cleaning. Seriously spotless homes. Proudly serving Groton and Southeastern CT & RI.</p>
+          <img src="assets/logo-footer.png" width="420" height="420" loading="lazy" alt="The Muscle Maid" />
+          <p>Strong cleaning. Seriously spotless homes. Proudly serving Groton and Southeastern CT & Southern RI.</p>
         </div>
         <div>
           <h5>Explore</h5>
