@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — The Muscle Maid</title>
+  <title>Contact &amp; Service Area | The Muscle Maid | Southeastern CT</title>
   <meta name="description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
   <link rel="canonical" href="https://themusclemaid.com/contact.html" />
   <!-- Link previews (Facebook, iMessage, texts, etc.) -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="The Muscle Maid" />
-  <meta property="og:title" content="Contact — The Muscle Maid" />
+  <meta property="og:title" content="Contact &amp; Service Area | The Muscle Maid | Southeastern CT" />
   <meta property="og:description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
   <meta property="og:url" content="https://themusclemaid.com/contact.html" />
   <meta property="og:image" content="https://themusclemaid.com/assets/og-image.jpg" />
@@ -18,14 +18,14 @@
   <meta property="og:image:alt" content="Pink cleaning bucket with a The Muscle Maid towel, brush, spray bottle, and sponge" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Contact — The Muscle Maid" />
+  <meta name="twitter:title" content="Contact &amp; Service Area | The Muscle Maid | Southeastern CT" />
   <meta name="twitter:description" content="Get in touch with The Muscle Maid — call, email, or request a quote for cleaning service in Groton and Southeastern CT & RI." />
   <meta name="twitter:image" content="https://themusclemaid.com/assets/og-image.jpg" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png?v=2" />
   <link rel="alternate icon" href="assets/favicon.ico?v=2" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=2" />
-  <link rel="stylesheet" href="styles.css?v=3" />
+  <link rel="stylesheet" href="styles.css?v=5" />
   <style>
     /* Contact-page specific styles */
     .contact-grid {
@@ -129,14 +129,18 @@
       <a href="index.html" class="brand-logo">
         <img src="assets/logo-header.png" width="126" height="168" alt="The Muscle Maid — We Lift the Dirt" />
       </a>
-      <nav class="main-nav">
+      <nav class="main-nav" id="main-nav" aria-label="Main menu">
         <a href="index.html">Home</a>
         <a href="services.html">Services</a>
         <a href="estimate.html">Estimate</a>
         <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
         <a href="contact.html" class="active">Contact</a>
       </nav>
-      <a class="btn btn-primary" href="estimate.html">Get a Quote</a>
+      <a class="btn btn-primary header-cta" href="estimate.html">Get a Quote</a>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu">
+        <span class="nav-toggle-bars" aria-hidden="true"></span>
+      </button>
     </div>
   </header>
 
@@ -234,6 +238,7 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="estimate.html">Instant Estimate</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="https://clienthub.getjobber.com/hubs/c917ccc4-68cf-48dd-b42f-7f0e2696f60c/public/requests/4762090/new" target="_blank" rel="noopener">Request a Quote</a></li>
           </ul>
@@ -258,5 +263,6 @@
     </div>
   </footer>
 
+  <script src="nav.js" defer></script>
 </body>
 </html>
