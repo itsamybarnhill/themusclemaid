@@ -25,6 +25,11 @@
     frequency: { onetime: 0, weekly: 0.20, biweekly: 0.15, monthly: 0.10 } // Maintenance cleans only
   };
 
+  /* Smallest home the online estimator will quote. Anything under this is
+     sent to email for a custom quote rather than priced automatically.
+     Keep in sync with the min="" attribute on #mm-sqft in estimate.html. */
+  var MIN_SQFT = 400;
+
   /* qty:true  -> +/- stepper, 0..max
      qty:false -> single on/off toggle
      standardOnly:true -> Maintenance only; hidden on Deep (which already includes appliance interiors) */
@@ -234,6 +239,10 @@
     var msg = '', focus = null;
     if (!sqftRaw || isNaN(sqft) || sqft <= 0) {
       msg = "Please enter your home's square footage."; focus = 'mm-sqft';
+    } else if (sqft < MIN_SQFT) {
+      msg = 'Our online estimator starts at ' + MIN_SQFT.toLocaleString() + ' sq ft. '
+          + 'For a smaller space, email themusclemaidllc@gmail.com and we\'ll quote it for you.';
+      focus = 'mm-sqft';
     } else if (!bedsRaw || isNaN(beds) || beds < 0) {
       msg = 'Please enter the number of bedrooms (enter 0 for a studio).'; focus = 'mm-beds';
     } else if (!bathsRaw || isNaN(baths) || baths <= 0) {
